@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\PropertyTypeController;
 
 /*
@@ -19,12 +20,12 @@ use App\Http\Controllers\Backend\PropertyTypeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // User Frontend All Route
-// Route::get('/', [UserController::class, 'Index']);
+ Route::get('/', [UserController::class, 'Index']);
 
 
 
@@ -50,11 +51,19 @@ Route::middleware(['auth','role:admin'])->group(function()
 
     Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
 
-    Route::controller(PropertyTypeController::class)->group(function(){
 
-        Route::get('/all/type', 'AllType')->name('all.type');
 
-   });
+    Route::get('/create/property', [AdminController::class, 'createProperty'])->name('create.property');
+
+    Route::post('/store/property', [AdminController::class, 'storeProperty'])->name('store.property');
+
+    Route::get('/show/property', [AdminController::class, 'showProperty'])->name('show.property');
+
+
+//     Route::controller(AdminController::class)->group(function(){
+
+//          Route::get('/create/property', 'createProperty')->name('create.property');
+//    });
 
 });
 
@@ -65,7 +74,8 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
 
 
 
-Route::middleware(['auth','role:agent'])->group(function()
-{
-Route::get('/agent/dashboard', [AgentController::class, 'AgentDashboard'])->name('agent.dashboard');
-});
+// Route::middleware(['auth','role:agent'])->group(function()
+// {
+// Route::get('/agent/dashboard', [AgentController::class, 'AgentDashboard'])->name('agent.dashboard');
+
+// });

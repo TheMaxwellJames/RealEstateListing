@@ -26,10 +26,10 @@
           <div class="collapse" id="emails">
             <ul class="nav sub-menu">
               <li class="nav-item">
-                <a href="" class="nav-link">All Property</a>
+                <a href="{{route('show.property')}}" class="nav-link">All Property</a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">Add Propery</a>
+                <a href="{{route('create.property')}}" class="nav-link">Add Propery</a>
               </li>
 
             </ul>
