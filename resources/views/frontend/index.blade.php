@@ -188,89 +188,6 @@
     </div>
   </nav><!-- End Header/Navbar -->
 
-  <!-- ======= Intro Section ======= -->
-  <div class="intro intro-carousel swiper position-relative">
-
-    <div class="swiper-wrapper">
-
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-1.jpg)">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <p class="intro-title-top">Doral, Florida
-                      <br> 78345
-                    </p>
-                    <h1 class="intro-title mb-4 ">
-                      <span class="color-b">204 </span> Mount
-                      <br> Olive Road Two
-                    </h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-2.jpg)">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <p class="intro-title-top">Doral, Florida
-                      <br> 78345
-                    </p>
-                    <h1 class="intro-title mb-4">
-                      <span class="color-b">204 </span> Rino
-                      <br> Venda Road Five
-                    </h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-3.jpg)">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <p class="intro-title-top">Doral, Florida
-                      <br> 78345
-                    </p>
-                    <h1 class="intro-title mb-4">
-                      <span class="color-b">204 </span> Alira
-                      <br> Roan Road One
-                    </h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="swiper-pagination"></div>
-  </div><!-- End Intro Section -->
 
   <main id="main">
 
@@ -287,30 +204,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
-            <div class="card-box-c foo">
-              <div class="card-header-c d-flex">
-                <div class="card-box-ico">
-                  <span class="bi bi-cart"></span>
-                </div>
-                <div class="card-title-c align-self-center">
-                  <h2 class="title-c">Lifestyle</h2>
-                </div>
-              </div>
-              <div class="card-body-c">
-                <p class="content-c">
-                  Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                  convallis a pellentesque
-                  nec, egestas non nisi.
-                </p>
-              </div>
-              <div class="card-footer-c">
-                <a href="#" class="link-c link-icon">Read more
-                  <span class="bi bi-chevron-right"></span>
-                </a>
-              </div>
-            </div>
-          </div>
+
           <div class="col-md-4">
             <div class="card-box-c foo">
               <div class="card-header-c d-flex">
@@ -335,30 +229,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="card-box-c foo">
-              <div class="card-header-c d-flex">
-                <div class="card-box-ico">
-                  <span class="bi bi-card-checklist"></span>
-                </div>
-                <div class="card-title-c align-self-center">
-                  <h2 class="title-c">Sell</h2>
-                </div>
-              </div>
-              <div class="card-body-c">
-                <p class="content-c">
-                  Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                  convallis a pellentesque
-                  nec, egestas non nisi.
-                </p>
-              </div>
-              <div class="card-footer-c">
-                <a href="#" class="link-c link-icon">Read more
-                  <span class="bi bi-chevron-right"></span>
-                </a>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </section><!-- End Services Section -->
@@ -366,7 +237,7 @@
     <!-- ======= Latest Properties Section ======= -->
     <section class="section-property section-t8">
       <div class="container">
-        <div class="row">
+        {{-- <div class="row">
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
@@ -379,12 +250,22 @@
               </div>
             </div>
           </div>
+        </div> --}}
+        @if (count($properties) > 0)
+        <div class="carousel-item-b swiper-slide">
+            @foreach ($properties as $property)
+                @include('partials/property-card', ['property' => $property])
+            @endforeach
         </div>
+    @else
+        <p>No available properties found.</p>
+    @endif
 
         <div id="property-carousel" class="swiper">
           <div class="swiper-wrapper">
 
-            <div class="carousel-item-b swiper-slide">
+
+            {{-- <div class="carousel-item-b swiper-slide">
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">
                   <img src="{{ asset('frontend/assets/img/property-6.jpg')}}" alt="" class="img-a img-fluid">
@@ -430,57 +311,57 @@
                   </div>
                 </div>
               </div>
-            </div><!-- End carousel item -->
+            </div> --}}
 
-            <div class="carousel-item-b swiper-slide">
-              <div class="card-box-a card-shadow">
+            <div class="card-box-a card-shadow">
                 <div class="img-box-a">
-                  <img src="{{ asset('frontend/assets/img/property-3.jpg')}}" alt="" class="img-a img-fluid">
+                    <img src="{{ asset('storage/' . $property->image) }}" alt="{{ $property->title }}" class="img-a img-fluid">
                 </div>
                 <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="property-single.html">157 West
-                          <br /> Central Park</a>
-                      </h2>
+                    <div class="card-overlay-a-content">
+                        <div class="card-header-a">
+                            <h2 class="card-title-a">
+                                <a href="{{ route('properties.show', $property->id) }}">{{ $property->title }}</a>
+                            </h2>
+                        </div>
+                        <div class="card-body-a">
+                            @if ($property->price)
+                                <div class="price-box d-flex">
+                                    <span class="price-a">rent | $ {{ $property->price }}</span>
+                                </div>
+                            @endif
+                            <a href="{{ route('properties.show', $property->id) }}" class="link-a">Click here to view
+                                <span class="bi bi-chevron-right"></span>
+                            </a>
+                        </div>
+                        <div class="card-footer-a">
+                            <ul class="card-info d-flex justify-content-around">
+                                {{-- <li>
+                                    <h4 class="card-info-title">Area</h4>
+                                    <span>{{ $property->area }}m<sup>2</sup></span>
+                                </li> --}}
+                                {{-- <li>
+                                    <h4 class="card-info-title">Beds</h4>
+                                    <span>{{ $property->beds }}</span>
+                                </li> --}}
+                                {{-- <li>
+                                    <h4 class="card-info-title">Baths</h4>
+                                    <span>{{ $property->baths }}</span>
+                                </li> --}}
+                                {{-- <li>
+                                    <h4 class="card-info-title">Garages</h4>
+                                    <span>{{ $property->garages }}</span>
+                                </li> --}}
+                            </ul>
+                        </div>
                     </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex">
-                        <span class="price-a">rent | $ 12.000</span>
-                      </div>
-                      <a href="property-single.html" class="link-a">Click here to view
-                        <span class="bi bi-chevron-right"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                      <ul class="card-info d-flex justify-content-around">
-                        <li>
-                          <h4 class="card-info-title">Area</h4>
-                          <span>340m
-                            <sup>2</sup>
-                          </span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Beds</h4>
-                          <span>2</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Baths</h4>
-                          <span>4</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Garages</h4>
-                          <span>1</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
                 </div>
-              </div>
-            </div><!-- End carousel item -->
+            </div>
 
-            <div class="carousel-item-b swiper-slide">
+
+
+
+            {{-- <div class="carousel-item-b swiper-slide">
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">
                   <img src="{{ asset('frontend/assets/img/property-7.jpg')}}" alt="" class="img-a img-fluid">
@@ -526,9 +407,9 @@
                   </div>
                 </div>
               </div>
-            </div><!-- End carousel item -->
+            </div> --}}
 
-            <div class="carousel-item-b swiper-slide">
+            {{-- <div class="carousel-item-b swiper-slide">
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">
                   <img src="{{ asset('frontend/assets/img/property-10.jpg')}}" alt="" class="img-a img-fluid">
@@ -574,7 +455,8 @@
                   </div>
                 </div>
               </div>
-            </div><!-- End carousel item -->
+            </div> --}}
+
           </div>
         </div>
         <div class="propery-carousel-pagination carousel-pagination"></div>
